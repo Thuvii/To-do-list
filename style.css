@@ -60,5 +60,13 @@ body{
     margin: 10px;
     color: aliceblue;
     display: flex;
-    
+    justify-content: space-between;
+    align-items:center; 
+    width: 100%;
+}
+
+.space li{
+    text-align: left;
+    flex-grow: 1;
+    margin-right: 15px;
 }
