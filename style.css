@@ -8,65 +8,75 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    height: 50vh;
 }
 
 .container{
-    height: 50vmin;
     width: 50vmin;
     background-color:darkblue;
     display: flex;
     align-items: center;
     flex-direction: column;
+    border-radius: 20px;
 }
 
 .input-wrapper{
     display: flex;
-    margin: 10px;
-    position: absolute;
+    margin: 20px 0;
 }
 
-.input-wrapper .input{
+.input{
     padding: 15px;
     border: none;
     border-radius: 20px 0 0 20px ;
 }
-.input-wrapper .input:focus{
+.input:focus{
     outline: none;
 }
 
-.input-wrapper .inputBtn{
+.inputBtn{
     padding: 15px;
     border: none;
     border-radius: 0px 20px 20px 0;
 }
 
-.input-wrapper .inputBtn:hover{
+.inputBtn:hover{
     transition: 0.5s;
     background-color: red;
 }
 
-.list-wrapper{
-    margin-top: 70px;
-}
+
 
 .list{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 
-.space {
+.task-item{
     margin: 10px;
     color: aliceblue;
     display: flex;
+    gap: 10px;
     justify-content: space-between;
-    align-items:center; 
-    width: 100%;
 }
 
-.space li{
-    text-align: left;
-    flex-grow: 1;
-    margin-right: 15px;
+.task {
+  display: inline;
+  color: white;
+}
+
+.deleteBtn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.deleteBtn:hover {
+  background-color: darkred;
+  transition: 0.3s;
 }

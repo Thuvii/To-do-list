@@ -2,31 +2,53 @@ let input = document.querySelector(".input")
 let inputBtn = document.querySelector(".inputBtn")
 let list = document.querySelector(".list")
 
+
 inputBtn.addEventListener("click", ()=>{
-    let div = document.createElement("div")
-    let ch = document.createElement("li")
-    let deleteBtn = document.createElement("button")
-    if(input.value != ""){
-        ch.innerText = input.value;
-        ch.style.display = "inline"
-        deleteBtn.innerText = "delete"
-        div.classList.add("space")
-        div.appendChild(ch)
-        div.appendChild(deleteBtn)
-        list.appendChild(div)
-        input.value = "";
+    let task = input.value.trim();
+
+    if(task){
+        const taskItem = createTask(task)
+        list.append(taskItem)
+        input.value = ""
     }
-    ch.addEventListener("click", ()=>{
-        if(ch.style.textDecoration  ==  "none"){
-            ch.style.textDecoration  =  "line-through"
-            ch.style.opacity = 0.5
-        }else{
-            ch.style.textDecoration  =  "none"
-            ch.style.opacity = 1
-        }    
-    })
-    
-    deleteBtn.addEventListener("click", (e)=>{
-        div.remove()
-    })
 })
+
+
+function createTask(task){
+    let div = document.createElement("div")
+    div.classList.add("task-item")
+
+    let li = document.createElement("li")
+    li.innerText = task
+    li.classList.add("task")
+    
+    let deleteBtn = createDeleteBtn(div)
+
+    div.appendChild(li)
+    div.appendChild(deleteBtn)
+
+
+    li.addEventListener("click",toggleStatus)
+    return div
+}
+
+
+function createDeleteBtn(parentDiv){
+    let deleteBtn = document.createElement("button")
+    deleteBtn.innerText = "Delete"
+    deleteBtn.classList.add("deleteBtn")
+
+    deleteBtn.addEventListener("click", ()=>{
+        parentDiv.remove()
+    })
+    return deleteBtn
+}
+
+
+function toggleStatus(e){
+    const status = e.target
+    const iscomplete = status.style.textDecoration === "line-through"
+
+    status.style.textDecoration = iscomplete ? "none" : "line-through"
+    task.style.opacity = iscomplete ? 1 : 0.5
+}
